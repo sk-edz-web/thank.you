@@ -1,3 +1,4 @@
+// birthday-thanks-card-creator/src/components/AdminPanel.tsx
 import React, { useState, useEffect, useRef, CSSProperties, ChangeEvent, MouseEvent } from 'react';
 import { motion } from 'motion/react';
 import { 
@@ -204,7 +205,7 @@ export default function AdminPanel({ onBack }: AdminPanelProps) {
     const file = files[0];
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'all');
+    formData.append('upload_preset', 'invoice'); // Changed from 'all' to 'invoice' as requested
 
     setIsUploading(true);
     setErrorNotice(null);
@@ -1263,70 +1264,4 @@ export default function AdminPanel({ onBack }: AdminPanelProps) {
                       value={personalNote}
                       onChange={(e) => setPersonalNote(e.target.value)}
                       rows={4}
-                      className="w-full bg-black border border-white/10 py-2 px-3 text-white outline-none focus:border-rose-500 font-mono"
-                    />
-                  </div>
-
-                  {/* Ambient Card Music Uploader */}
-                  <div className="border-t border-white/10 pt-4 mt-2 flex flex-col gap-2">
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-[9px] font-mono tracking-widest text-[#ef4444] font-bold uppercase flex items-center gap-1">
-                        <Music size={11} className="text-rose-500" /> Background Music
-                      </span>
-                      <label className="relative inline-flex items-center cursor-pointer select-none">
-                        <input 
-                          type="checkbox" 
-                          checked={bgMusicEnabled} 
-                          onChange={(e) => setBgMusicEnabled(e.target.checked)}
-                          className="sr-only peer" 
-                        />
-                        <div className="w-8 h-4 bg-white/10 rounded-none peer after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:h-3 after:w-3 after:transition-all peer-checked:bg-rose-500" />
-                      </label>
-                    </div>
-
-                    {bgMusicEnabled && (
-                      <div className="flex flex-col gap-2 bg-black p-2 border border-white/10">
-                        <input 
-                          type="text" 
-                          placeholder="Melody URL Link"
-                          value={bgMusicUrl}
-                          onChange={(e) => setBgMusicUrl(e.target.value)}
-                          className="w-full bg-[#111111] border border-white/5 px-2 py-1.5 text-[10px] font-mono placeholder-white/20"
-                        />
-                        <label className="flex items-center justify-center gap-1.5 py-2 bg-black hover:bg-white hover:text-black border border-white/10 cursor-pointer text-[9px] text-slate-300 font-mono uppercase tracking-widest transition-all">
-                          <Upload size={11} />
-                          <span>Upload Track</span>
-                          <input 
-                            type="file" 
-                            accept="audio/*"
-                            onChange={(e) => handleFileUpload(e, 'bg-music')}
-                            className="hidden"
-                          />
-                        </label>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            {/* Quick Helper guidelines popup block */}
-            <div className="mt-auto border-t border-white/10 pt-4 select-none">
-              <div className="p-3.5 bg-black border border-white/10 text-slate-400 text-[10px] leading-relaxed font-mono">
-                <div className="flex items-center gap-2 mb-2 border-b border-white/5 pb-1 select-none">
-                  <HelpCircle size={12} className="text-rose-500 shrink-0" />
-                  <h4 className="font-extrabold uppercase tracking-wide text-white">Manual Guide</h4>
-                </div>
-                <ul className="list-decimal pl-4 space-y-1.5 text-[9px] text-slate-300 uppercase tracking-tight">
-                  <li>Click elements to highlight configuration options</li>
-                  <li>Drag elements inside the workspace grid</li>
-                  <li>Size freely via dragging bottom right handle</li>
-                </ul>
-              </div>
-            </div>
-          </aside>
-        </div>
-      )}
-    </div>
-  );
-}
+                      className="w-full bg-black border border-white/10 py-2 px-3 text-white outline-none focus:border-rose-

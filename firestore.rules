@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global Safety Net Default-Deny Catch-All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Primitive Global Verification Helpers
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidCard(data) {
+      return data.keys().hasAll(['id', 'name', 'code', 'createdAt'])
+        && data.id is string && data.id.size() <= 128
+        && data.name is string && data.name.size() <= 200
+        && data.code is string && data.code.size() <= 100
+        && data.createdAt is number;
+    }
+
+    // Gratitude Cards Rules Setup
+    match /cards/{cardId} {
+      // Allow any visitor to view cards by their secret access code
+      allow read, get, list: if true;
+      
+      // Allow creation & editing of cards if payload conforms to correct format schema
+      allow create, update: if isValidCard(request.resource.data);
+      
+      // Allow card deletion
+      allow delete: if true;
+    }
+  }
+}

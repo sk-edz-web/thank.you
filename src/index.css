@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,700;0,900;1,400;1,900&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: "Montserrat", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Carbon-grid pattern for absolute positioning guides */
+.carbon-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Custom styling for cards canvas items */
+.card-canvas-viewport {
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Custom drag handle indicators showing industrial high contrast */
+.active-drag-element {
+  outline: 2px solid #ef4444;
+  outline-offset: 4px;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ef4444;
+}

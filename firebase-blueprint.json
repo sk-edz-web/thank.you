@@ -1,0 +1,28 @@
+{
+  "entities": {
+    "Card": {
+      "title": "Card",
+      "description": "Custom appreciation digital card containing animated interactive elements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier of the card" },
+        "name": { "type": "string", "description": "Friend's name associated with the card" },
+        "code": { "type": "string", "description": "Unique secret uppercase access code of the card" },
+        "createdAt": { "type": "number", "description": "UTC millisecond timestamp of creation" },
+        "bgType": { "type": "string", "description": "Category of background: color, gradient or image" },
+        "bgColor": { "type": "string", "description": "Raw CSS background code or custom image URL" },
+        "bgMusicEnabled": { "type": "boolean", "description": "True if sweet background track loop is active" },
+        "bgMusicUrl": { "type": "string", "description": "Music audio track URL" },
+        "elements": { "type": "array", "description": "Dynamic media/text elements on the canvas coordinates" },
+        "personalNote": { "type": "string", "description": "Optional custom heartfelt description" }
+      },
+      "required": ["id", "name", "code", "createdAt"]
+    }
+  },
+  "firestore": {
+    "cards/{cardId}": {
+      "schema": "Card",
+      "description": "Collection of all dynamic gratitude cards"
+    }
+  }
+}

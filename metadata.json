@@ -1,0 +1,6 @@
+{
+  "name": "Birthday Thanks Card Creator",
+  "description": "An interactive web portal to thank your birthday well-wishers. Features a beautiful, animated landing page and an admin canvas builder to design custom responsive cards for each friend using personalized text, images, videos, audio, and animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
